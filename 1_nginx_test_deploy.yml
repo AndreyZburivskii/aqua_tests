@@ -1,33 +1,18 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
-  name: test-nginx-po
-  labels:
-    app: nginx
+  name: test-pd
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: nginx
-  template:
-    metadata:
-      labels:
-        app: nginx    
-    spec:
-      containers:
-      - name: test-cont
-        image: automation.azurecr.io/nginx-1-19-1-qa-agent-team:251020221006
-        volumeMounts:
-        - mountPath: /tmp/aqua/dirA
-          name: mount-test-1
-        - mountPath: /tmp/aqua/dirB
-          name: mount-test-2
-      volumes:
-      - name: mount-test-1
-        hostPath:
-          path: /tmp/A
-      - name: mount-test-2
-        hostPath:
-          path: /tmp/B
-      imagePullSecrets:
-      - name: regcred-acr
+  containers:
+  - image: registry.k8s.io/test-webserver
+    name: test-container
+    volumeMounts:
+    - mountPath: /test-pd
+      name: test-volume
+  volumes:
+  - name: test-volume
+    hostPath:
+      # directory location on host
+      path: /data
+      # this field is optional
+      type: Directory
