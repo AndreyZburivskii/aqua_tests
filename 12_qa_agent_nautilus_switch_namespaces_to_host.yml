@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: container-switch-namespaces-to-host
+spec:
+  containers:
+  - name: test-container-switch-namespaces-to-host
+    image: automation.azurecr.io/qa_agent_nautilus_cv_switch_namespaces_to_host:2022.01.13
+  imagePullSecrets:
+  - name: regcred-acr

@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: container-network
+spec:
+  containers:
+  - name: test-container-network
+    image: automation.azurecr.io/qa_agent_nautilus_network:22.10.16
+  imagePullSecrets:
+  - name: regcred-acr

@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: container-priv-escalation
+spec:
+  containers:
+  - name: test-container-priv-escalation
+    image: automation.azurecr.io/qa_agent_nautilus_priv_escalation:2022.10.02
+  imagePullSecrets:
+  - name: regcred-acr

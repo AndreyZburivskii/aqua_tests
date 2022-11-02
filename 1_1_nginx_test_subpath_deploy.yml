@@ -1,0 +1,35 @@
+# subpath doesn't work gor K3s
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-nginx-po
+  labels:
+    app: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx    
+    spec:
+      containers:
+      - name: test-cont
+        image: automation.azurecr.io/nginx-1-19-1-qa-agent-team:251020221006
+        volumeMounts:
+        - mountPath: /tmp/aqua/dirA
+          name: mount-test-1
+        - mountPath: /tmp/aqua/dirB
+          name: mount-test-2
+          subPath: "bb"
+      volumes:
+      - name: mount-test-1
+        hostPath:
+          path: /tmp/A
+      - name: mount-test-2
+        hostPath:
+          path: /tmp/B
+      imagePullSecrets:
+      - name: regcred-acr

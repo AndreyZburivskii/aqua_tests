@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: container-writing
+spec:
+  containers:
+  - name: test-container-writing
+    image: automation.azurecr.io/qa_agent_nautilus_cv_writing:2022.10.19
+  imagePullSecrets:
+  - name: regcred-acr
