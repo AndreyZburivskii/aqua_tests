@@ -3,5 +3,9 @@
 kubectl port-forward $(kubectl get pods --no-headers -o custom-columns=":metadata.name" | grep test-nginx-deploy) 8081:80 &
 curl 127.0.0.1:8081
 
+# kill port-forward
+ps -ef|grep port-forward
+kill -9 <PID>
+
 # get ENVs from pod
 kubectl exec -it $(kubectl get pods --no-headers -o custom-columns=":metadata.name" | grep test-nginx-deploy) -- env
