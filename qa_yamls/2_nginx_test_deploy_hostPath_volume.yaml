@@ -8,14 +8,11 @@ data:
     server {
         listen       80 default_server;
         server_name  _;
-
         default_type text/plain;
-
         location / {
             return 200 '$hostname\n';
         }
     }
-
 ...
 
 ---
