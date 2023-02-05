@@ -38,7 +38,7 @@ spec:
     spec:
       containers:
       - name: test-cont
-        image: automation.azurecr.io/nginx-1-19-1-qa-agent-team:script_6
+        image: automation.azurecr.io/nginx-1-19-1-qa-agent-team:script_7
         env:
         - name: __NODE_NAME
           valueFrom:
